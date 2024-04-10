@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { regions } from "../constants/rawData";
-import { chooseRandomIndex } from "../utils/randomCountry";
+import { Image } from "react-native";
 
 export const HomeScreen = ({
   selectedValue,
@@ -30,6 +30,11 @@ export const HomeScreen = ({
         </Picker>
       )}
       <Text>{randomCountry?.name.common} </Text>
+      <Image
+        src={randomCountry?.flags.png}
+        style={styles.image}
+        resizeMode="cover"
+      />
     </View>
   );
 };
@@ -40,6 +45,7 @@ const styles = StyleSheet.create({
     flex: 0.3,
     alignItems: "center",
     justifyContent: "space-around",
+    position: "relative",
   },
   picker: {
     width: 200,
@@ -61,5 +67,12 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 16,
     fontWeight: 600,
+  },
+  image: {
+    position: "absolute",
+    top: "50%",
+    marginTop: 200,
+    width: 300,
+    height: 200,
   },
 });
